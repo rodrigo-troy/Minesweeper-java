@@ -28,9 +28,14 @@ public class Cell {
     public void addNeighbor(Cell cell) {
         this.getNeighbors().add(cell);
 
-        if (cell.status.equals(Status.MINE)) {
+        if (cell.status.equals(Status.UNEXPLORED_MINE)) {
             minesAround++;
         }
+    }
+
+    public boolean isBomb() {
+        return this.getStatus().equals(Status.MINE_MARKED) ||
+               this.getStatus().equals(Status.UNEXPLORED_MINE);
     }
 
     public int getMinesAround() {

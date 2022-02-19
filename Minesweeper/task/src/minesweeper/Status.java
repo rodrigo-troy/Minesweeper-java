@@ -8,9 +8,9 @@ package minesweeper;
  * Time: 14:59
  */
 public enum Status {
-    EXPLORED,
     UNEXPLORED,
-    UNEXPLORED_FREE,
     UNEXPLORED_MARKED,
-    MINE
+    EXPLORED,
+    UNEXPLORED_MINE,
+    MINE_MARKED;
 }
