@@ -80,7 +80,8 @@ public class Minefield {
         }
 
         Cell cell = board[row][column];
-        if (cell.getStatus().equals(UNEXPLORED)) {
+        if (cell.getStatus().equals(UNEXPLORED) ||
+            cell.getStatus().equals(UNEXPLORED_MARKED)) {
             cell.setStatus(EXPLORED);
 
             if (cell.getMinesAround() == 0) {
@@ -191,7 +192,8 @@ public class Minefield {
                               r + 1);
 
             for (int c = 0; c < board[r].length; c++) {
-                if (board[r][c].getStatus().equals(UNEXPLORED_MINE)) {
+                if (board[r][c].getStatus().equals(UNEXPLORED_MINE) ||
+                    board[r][c].getStatus().equals(MINE_MARKED)) {
                     System.out.print('X');
                 } else if (board[r][c].getMinesAround() == 0) {
                     System.out.print('.');

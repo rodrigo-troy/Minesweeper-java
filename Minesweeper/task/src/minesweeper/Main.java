@@ -30,6 +30,7 @@ public class Main {
                 if (minefield.isBomb(rowIndex,
                                      columnIndex)) {
                     System.out.println("You stepped on a mine and failed!");
+                    minefield.printRealMatrix();
                     return;
                 } else {
                     minefield.exploreCell(rowIndex,
@@ -42,6 +43,7 @@ public class Main {
 
             if (minefield.checkWinner()) {
                 System.out.println("Congratulations! You found all the mines!");
+                minefield.printRealMatrix();
                 return;
             }
 
