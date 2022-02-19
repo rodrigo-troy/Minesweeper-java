@@ -11,18 +11,30 @@ import java.util.List;
  * Time: 14:57
  */
 public class Cell {
-    private int rowIndex;
-    private int ColumnIndex;
+    private final int rowIndex;
+    private final int columnIndex;
+    private int minesAround;
     private Status status;
-    private Boolean containBomb;
-    private List<Cell> neighbords;
+    private List<Cell> neighbors;
 
     public Cell(int rowIndex,
                 int columnIndex) {
         this.rowIndex = rowIndex;
-        ColumnIndex = columnIndex;
+        this.columnIndex = columnIndex;
+        this.minesAround = 0;
         this.status = Status.UNEXPLORED;
-        this.containBomb = false;
+    }
+
+    public void addNeighbor(Cell cell) {
+        this.getNeighbors().add(cell);
+
+        if (cell.status.equals(Status.MINE)) {
+            minesAround++;
+        }
+    }
+
+    public int getMinesAround() {
+        return minesAround;
     }
 
     public int getRowIndex() {
@@ -30,7 +42,7 @@ public class Cell {
     }
 
     public int getColumnIndex() {
-        return ColumnIndex;
+        return columnIndex;
     }
 
     public Status getStatus() {
@@ -41,23 +53,15 @@ public class Cell {
         this.status = status;
     }
 
-    public Boolean getContainBomb() {
-        return containBomb;
-    }
-
-    public void setContainBomb(Boolean containBomb) {
-        this.containBomb = containBomb;
-    }
-
-    public List<Cell> getNeighbords() {
-        if (neighbords == null) {
-            neighbords = new ArrayList<>();
+    public List<Cell> getNeighbors() {
+        if (neighbors == null) {
+            neighbors = new ArrayList<>();
         }
 
-        return neighbords;
+        return neighbors;
     }
 
-    public void setNeighbords(List<Cell> neighbords) {
-        this.neighbords = neighbords;
+    public void setNeighbors(List<Cell> neighbors) {
+        this.neighbors = neighbors;
     }
 }

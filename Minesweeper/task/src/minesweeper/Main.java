@@ -11,9 +11,11 @@ public class Main {
         int rows = 9;
         int columns = 9;
 
-        char[][] matrix = new char[rows][columns];
-
-        prepareMatrix(matrix,
+        Minefield minefield = new Minefield(minesCount,
+                                            columns,
+                                            rows);
+        minefield.printRealMatrix();
+       /* prepareMatrix(matrix,
                       minesCount);
         countMinesPerCell(matrix);
         printMatrix(matrix);
@@ -53,10 +55,10 @@ public class Main {
                 System.out.println("Congratulations! You found all the mines!");
                 return;
             }
-        }
+        }*/
     }
 
-    private static void countMinesPerCell(char[][] matrix) {
+   /* private static void countMinesPerCell(char[][] matrix) {
         for (int r = 0; r < matrix.length; r++) {
             for (int c = 0; c < matrix[r].length; c++) {
 
@@ -174,5 +176,5 @@ public class Main {
                                                                 10);
                 break;
         }
-    }
+    }*/
 }
